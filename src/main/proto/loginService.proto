@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package loginservice;
+
+option java_package = "com.mash.grpc.loginservice";
+option java_multiple_files = true;
+
+message CredentialsRequest {
+  string login = 1;
+  string password = 2;
+}
+
+message CredentialsResponse {
+  string token = 1;
+}
+
+service UserService {
+  rpc register(CredentialsRequest) returns (CredentialsResponse) {};
+  rpc login(CredentialsRequest) returns (CredentialsResponse) {};
+}
